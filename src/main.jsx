@@ -1,56 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import img1 from "./images/img1.jpg";
-import img2 from "./images/img2.webp";
-import img3 from "./images/img3.jpg";
-import "./index.css";
+
 import { useState } from "react";
 
-const Slideshow = () => {
-  const images = [
-    [img1, "text1"],
-    [img2, "text2"],
-    [img3, "text3"],
-  ];
+import Slideshow from "./Slideshow/UserInfo.jsx";
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+const info = [
+  {
+    id: 1,
+    name: "John",
+    info: "ajdjdjdjdfj akdkddfddkdk lslslsslsll lsslslslfs djdkjkdjksdjfdkj",
+  },
+  {
+    id: 2,
+    name: "Alis",
+    info: "mkmkknnknknkn bubjjbjh jjbjbjbjbbbkk mkmkknnknknkn bubjjbjh jjbjbjbjbbbkk 11111111111111111111111111111111111111111111  11111111111111111111111111111111111111111111 mkmkknnknknkn bubjjbjh jjbjbjbjbbbkk 11111111111111111111111111111111111111111111  ssssssssssssssssssssssssssssssssssss ",
+  },
+  {
+    id: 3,
+    name: "Ann",
+    info: "2125485787545 57979 snhdsihckjsncjkcnk bjkbscihdcish nkasjcsjcoscjk nccccccccccccccccc",
+  },
+];
 
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
-  };
-
+const App = () => {
   return (
-    <div
-      style={{ textAlign: "center", display: "flex", flexDirection: "column" }}
-    >
-      <div
-        style={{ textAlign: "center", display: "flex", flexDirection: "row" }}
-      >
-        <img
-          src={images[currentIndex][0]}
-          alt="Slideshow"
-          style={{ width: "400px", height: "300px" }}
-        />
-        <div>{images[currentIndex][1]}</div>
-      </div>
-      <div>
-        <div>
-          <button onClick={prevImage}>Previous</button>
-          <button onClick={nextImage}>Next</button>
-        </div>
-      </div>
+    <div className="app">
+      <Slideshow info={info} />
     </div>
   );
 };
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Slideshow />
+    <App />
   </React.StrictMode>
 );
